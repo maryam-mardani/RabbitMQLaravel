@@ -15,3 +15,20 @@
 - ProcessRabbitMQMessage::dispatchSync(); // for fetch messages
 
 
+
+## Install RabbitMQ on Windows
+- Install Erlang: RabbitMQ requires a 64-bit supported version of Erlang for Windows to be installed.
+- Install RabbitMQ: Download RabbitMQ windows installer from (https://www.rabbitmq.com/docs/install-windows)
+- Open a cmd as administrator and go to the RabbitMQ directory (C:\Program Files\RabbitMQ Server\rabbitmq_server-3.13.2\sbin)
+- Run rabbitmqctl.bat help (if returned the help documentation, means that installed as well)
+- Enable Plugin: Run rabbitmq-plugins.bat enable rabbitmq_management
+- Start Xampp apache or wamp or something else
+- Open browser and go to this link: (http://localhost:15672/)
+- if you don't be able to see RabbitMQ dashboard, you should doing next steps:
+    -  Run rabbitmq_service remove
+    -  Run rabbitmq_service install
+    -  Reinstall RabbitMQ installer
+      
+
+
+
