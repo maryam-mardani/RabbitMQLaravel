@@ -17,7 +17,7 @@
 
 
 ## Install RabbitMQ on Windows
-- Install Erlang: RabbitMQ requires a 64-bit supported version of Erlang for Windows to be installed.
+- Install Erlang: RabbitMQ requires a 64-bit supported version of Erlang for Windows to be installed.(https://www.erlang.org/downloads)
 - Install RabbitMQ: Download RabbitMQ windows installer from (https://www.rabbitmq.com/docs/install-windows)
 - Open a cmd as administrator and go to the RabbitMQ directory (C:\Program Files\RabbitMQ Server\rabbitmq_server-3.13.2\sbin)
 - Run rabbitmqctl.bat help (if returned the help documentation, means that installed as well)
