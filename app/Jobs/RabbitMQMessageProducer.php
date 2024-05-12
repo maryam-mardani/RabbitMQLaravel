@@ -31,13 +31,25 @@ class RabbitMQMessageProducer implements ShouldQueue
 
         $channel = $connection->channel();
 
-        // Declare a queue
-        $channel->queue_declare('TestMardani', false, false, false, false);
 
+        // Declare a queue - durable is ture
+        $channel->queue_declare('TestMardani', false, true, false, false);
+
+        // mark messages as persistent (save the message to disk)
+        $properties = ['delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT];
         $messageBody = 'salam';
-        $message = new AMQPMessage($messageBody);
+        $message = new AMQPMessage($messageBody,$properties);
 
-        // Publish the message to the queue
+
+        //don't dispatch a new message to a worker until it has processed and acknowledged the previous one
+        //$channel->basic_qos(null, 1, false);
+
+        //Declare a «fanout» exchange (exchange types =  direct, topic, headers,fanout)
+        //fanout: broadcasts all the messages (for logging system)
+        //$channel->exchange_declare('logs', 'fanout', false, false, false);
+        //$channel->basic_publish($message, 'logs', 'TestMardani');
+
+        // Publish the message to the queue (default exchange)
         $channel->basic_publish($message, '', 'TestMardani');
 
         // Close the channel and connection
